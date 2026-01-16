@@ -9,7 +9,7 @@
 
     <script>
         (function() {
-            // 1. INJETANDO O CSS
+            // 1. INJETANDO O CSS (Visual do Painel)
             const css = `
                 body { background-color: #000; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: 'Courier New', Courier, monospace; color: white; overflow: hidden; background-image: radial-gradient(circle, #1a0000 0%, #000 80%); }
                 #loginScreen { width: 320px; background: rgba(10, 0, 0, 0.95); border: 2px solid #ff0000; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 0 30px rgba(255, 0, 0, 0.6); z-index: 200; }
@@ -31,7 +31,7 @@
             styleSheet.innerText = css;
             document.head.appendChild(styleSheet);
 
-            // 2. ESTRUTURA
+            // 2. ESTRUTURA DO PAINEL
             document.body.innerHTML = `
                 <div id="loginScreen">
                     <div class="header">SYSTEM AUTH</div>
@@ -57,7 +57,7 @@
                 </div>
             `;
 
-            // 3. LÓGICA
+            // 3. LÓGICA DE FUNCIONAMENTO
             document.getElementById('loginBtn').onclick = () => {
                 if(document.getElementById('keyInput').value === "Hszinnz-lindãodms") {
                     document.getElementById('loginScreen').style.display = 'none';
@@ -68,10 +68,20 @@
             document.getElementById('injectBtn').onclick = () => {
                 const overlay = document.getElementById('hackerOverlay');
                 overlay.style.display = 'block';
+                
                 setTimeout(() => {
                     overlay.style.display = 'none';
-                    alert("INJETADO! ABRINDO JOGO...");
+                    alert("ARQUIVOS INJETADOS! ABRINDO JOGO...");
+                    
+                    // LÓGICA DE ABERTURA FORÇADA
+                    // Tenta abrir o Free Fire Normal
                     window.location.href = "intent://#Intent;package=com.dts.freefireth;scheme=android-app;end";
+                    
+                    // Pequeno atraso para tentar o Max caso o primeiro falhe
+                    setTimeout(() => {
+                        window.location.href = "intent://#Intent;package=com.dts.freefiremax;scheme=android-app;end";
+                    }, 500);
+                    
                 }, 3000);
             };
 
